@@ -11,11 +11,12 @@ def display_student(student_id):
     return render_template('student.html', student=query_by_id(student_id))
 @app.route('/add',methods=['GET', 'POST'])
 def add_student_route():
-    #if request.methods=='GET':
-        #return render_template(add.html)
-    #if request.methods=='POST':<
-     #   name = request.form['student.name']
-       # year = request.form['student.year']
+    if request.method=='GET':
+        return render_template("add.html")
+    if request.method=='POST':
+        name = request.form['student_name']
+        year = request.form['student_year']
+        add_student(name,year,finished_lab=False)
 
     return render_template('add.html')
 
